@@ -37,7 +37,7 @@ func NewConfig(d *schema.ResourceData) (*ConfigWrapper, error) {
 
 // vimURL returns a URL to pass to the VIM SOAP client.
 func (cw *ConfigWrapper) vimURL() (*url.URL, error) {
-	u, err := url.Parse("https://" + cw.config.VSphereServer + "/sdk")
+	u, err := url.Parse("https://" + cw.config.VSphereServer + ":44309/sdk")
 	if err != nil {
 		return nil, fmt.Errorf("error parse url: %s", err)
 	}
@@ -49,7 +49,7 @@ func (cw *ConfigWrapper) vimURL() (*url.URL, error) {
 
 // restURL returns a URL to pass to the REST client.
 func (cw *ConfigWrapper) restURL() (*cache.Session, error) {
-	u, err := url.Parse("https://" + cw.config.VSphereServer)
+	u, err := url.Parse("https://" + cw.config.VSphereServer+":44309")
 	if err != nil {
 		return nil, err
 	}
