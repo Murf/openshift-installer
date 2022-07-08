@@ -49,7 +49,7 @@ func CreateVSphereClients(ctx context.Context, vcenter, username, password strin
 	ctx, cancel := context.WithTimeout(ctx, 60*time.Second)
 	defer cancel()
 
-	u, err := soap.ParseURL(vcenter)
+	u, err := soap.ParseURL(vcenter+":44309")
 	if err != nil {
 		return nil, nil, nil, err
 	}

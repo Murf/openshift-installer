@@ -133,7 +133,7 @@ func NewConfig(d *schema.ResourceData) (*Config, error) {
 
 // vimURL returns a URL to pass to the VIM SOAP client.
 func (c *Config) vimURL() (*url.URL, error) {
-	u, err := url.Parse("https://" + c.VSphereServer + "/sdk")
+	u, err := url.Parse("https://" + c.VSphereServer + ":44309/sdk")
 	if err != nil {
 		return nil, fmt.Errorf("Error parse url: %s", err)
 	}
@@ -211,7 +211,7 @@ func (c *Config) Client() (*Client, error) {
 }
 
 func (c *Config) restURL() (*cache.Session, error) {
-	u, err := url.Parse("https://" + c.VSphereServer)
+	u, err := url.Parse("https://" + c.VSphereServer+":44309")
 	if err != nil {
 		return nil, err
 	}
