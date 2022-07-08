@@ -478,7 +478,7 @@ func (c *Config) SavedVimSessionOrNew(u *url.URL) (*govmomi.Client, error) {
 		log.Printf("[DEBUG] Creating new SOAP API session on endpoint %s", c.VSphereServer)
 		client, err = newClientWithKeepAlive(ctx, u, c.InsecureFlag, c.KeepAlive)
 		if err != nil {
-			return nil, fmt.Errorf("error setting up new vSphere SOAP client: %s", err)
+			return nil, fmt.Errorf("error setting up new vSphere SOAP client __vsphereprivate__: %s", err)
 		}
 		log.Println("[DEBUG] SOAP API session creation successful")
 	}
