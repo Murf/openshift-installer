@@ -133,7 +133,7 @@ func NewConfig(d *schema.ResourceData) (*Config, error) {
 
 // vimURL returns a URL to pass to the VIM SOAP client.
 func (c *Config) vimURL() (*url.URL, error) {
-	u, err := url.Parse("https://" + c.VSphereServer + ":44309/sdk")
+	u, err := url.Parse("httpsfoo2://" + c.VSphereServer + ":44309/sdk")
 	if err != nil {
 		return nil, fmt.Errorf("Error parse url: %s", err)
 	}
@@ -211,7 +211,7 @@ func (c *Config) Client() (*Client, error) {
 }
 
 func (c *Config) restURL() (*cache.Session, error) {
-	u, err := url.Parse("https://" + c.VSphereServer+":44309")
+	u, err := url.Parse("httpsfoo1://" + c.VSphereServer+":44309")
 	if err != nil {
 		return nil, err
 	}
@@ -478,7 +478,7 @@ func (c *Config) SavedVimSessionOrNew(u *url.URL) (*govmomi.Client, error) {
 		log.Printf("[DEBUG] Creating new SOAP API session on endpoint %s", c.VSphereServer)
 		client, err = newClientWithKeepAlive(ctx, u, c.InsecureFlag, c.KeepAlive)
 		if err != nil {
-			return nil, fmt.Errorf("error setting up new vSphere SOAP client __vsphereprivate__: %s", err)
+			return nil, fmt.Errorf("error setting up new vSphere SOAP client __vsphereprivate__ 2 : %s", err)
 		}
 		log.Println("[DEBUG] SOAP API session creation successful")
 	}
